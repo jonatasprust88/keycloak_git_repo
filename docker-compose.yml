@@ -17,6 +17,7 @@ services:
       KC_HTTPS_CERTIFICATE_FILE: /opt/keycloak/certs/tls.crt
       KC_HTTPS_CERTIFICATE_KEY_FILE: /opt/keycloak/certs/tls.key
       KC_HTTPS_PORT: 8443
+      KC_HOSTNAME_STRICT: 'false'
     ports:
       - "7443:8443"
     volumes:
