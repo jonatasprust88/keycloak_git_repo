@@ -13,10 +13,15 @@ services:
       KC_DB_PASSWORD: Q9@7nhUr9g
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HTTP_ENABLED: 'false'
+      KC_HTTPS_CERTIFICATE_FILE: /opt/keycloak/certs/tls.crt
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /opt/keycloak/certs/tls.key
+      KC_HTTPS_PORT: 8443
     ports:
-      - "8181:8080"
+      - "7443:8443"
     volumes:
       - keycloak_data:/opt/keycloak/data
+      - ./certs:/opt/keycloak/certs:ro
     depends_on:
       - db
     restart: unless-stopped
