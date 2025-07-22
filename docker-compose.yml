@@ -1,6 +1,17 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:15
+    container_name: keycloak-db
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: Q9@7nhUr9g
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
   keycloak:
     build:
       context: .
@@ -26,3 +37,7 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+
+volumes:
+  keycloak_data:
+  postgres_data:
